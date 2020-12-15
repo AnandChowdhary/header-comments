@@ -1,6 +1,6 @@
 {
   "name": "header-comments",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "GitHub Action to add header comments to all your files",
   "main": "dist/index.js",
   "scripts": {
