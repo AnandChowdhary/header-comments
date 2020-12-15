@@ -1151,13 +1151,6 @@ exports.issueCommand = issueCommand;
 
 /***/ }),
 
-/***/ 225:
-/***/ (function(module) {
-
-module.exports = require("fs/promises");
-
-/***/ }),
-
 /***/ 255:
 /***/ (function(__unusedmodule, exports) {
 
@@ -1417,9 +1410,9 @@ const core_1 = __webpack_require__(470);
 const recursive_readdir_1 = __importDefault(__webpack_require__(50));
 const path_1 = __webpack_require__(622);
 const comments_1 = __webpack_require__(255);
-const promises_1 = __webpack_require__(225);
+const fs_1 = __webpack_require__(747);
 const run = async () => {
-    const commentText = await promises_1.readFile(path_1.join(".", ".github", "FILE_HEADER"), "utf8");
+    const commentText = fs_1.readFileSync(path_1.join(".", ".github", "FILE_HEADER"), "utf8");
     const allFiles = await recursive_readdir_1.default(path_1.join(".", ...(core_1.getInput("directory") || "").split("/")));
     for await (const commentType of comments_1.commentTypes) {
         let comment = ``;
@@ -1433,9 +1426,9 @@ const run = async () => {
         for await (const extension of commentType.extensions) {
             const files = allFiles.filter((file) => file.endsWith(`.${extension}`));
             for await (const file of files) {
-                const contents = await promises_1.readFile(file, "utf8");
+                const contents = fs_1.readFileSync(file, "utf8");
                 if (contents.split("\n").pop() !== comment.split("\n").pop()) {
-                    await promises_1.writeFile(file, `${comment}\n${contents}`);
+                    fs_1.writeFileSync(file, `${comment}\n${contents}`);
                     console.log("Added comment", file);
                 }
             }
