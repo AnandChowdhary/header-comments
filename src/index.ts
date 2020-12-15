@@ -1,3 +1,9 @@
+/**
+ * This is an example file header
+ * @author Anand Chowdhary <mail@anandchowdhary.com>
+ * @link https://github.com/koj-co/header-comments
+*/
+
 import { getInput, setFailed } from "@actions/core";
 import recursiveReaddir from "recursive-readdir";
 import { join } from "path";
