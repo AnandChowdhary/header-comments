@@ -1,3 +1,11 @@
+## v1.0.4 (2020-12-15)
+
+[📝 Release notes](https://github.com/koj-co/header-comments/releases/tag/v1.0.4) · [💻 Compare](https://github.com/koj-co/header-comments/compare/v1.0.3...v1.0.4) · [🔖 Tag](https://github.com/koj-co/header-comments/tree/v1.0.4) · 🗄️ Archive ([zip](https://github.com/koj-co/header-comments/archive/v1.0.4.zip) · [tar.gz](https://github.com/koj-co/header-comments/archive/v1.0.4.tar.gz))
+
+### 🐛 Bug fixes
+
+- [`ebd5c9f`](https://github.com/koj-co/header-comments/commit/ebd5c9f)  Fix using first line for comment adding
+
 ## v1.0.3 (2020-12-15)
 
 [📝 Release notes](https://github.com/koj-co/header-comments/releases/tag/v1.0.3) · [💻 Compare](https://github.com/koj-co/header-comments/compare/v1.0.2...v1.0.3) · [🔖 Tag](https://github.com/koj-co/header-comments/tree/v1.0.3) · 🗄️ Archive ([zip](https://github.com/koj-co/header-comments/archive/v1.0.3.zip) · [tar.gz](https://github.com/koj-co/header-comments/archive/v1.0.3.tar.gz))
