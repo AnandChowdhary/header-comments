@@ -1410,7 +1410,7 @@ function expand(str, isTop) {
  * This is an example file header
  * @author Anand Chowdhary <mail@anandchowdhary.com>
  * @link https://github.com/koj-co/header-comments
-*/
+ */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -1431,8 +1431,9 @@ const run = async () => {
         commentText.split("\n").forEach((line) => {
             comment += `${commentType.middleLinePrefix}${line}\n`;
         });
+        comment = comment.trim();
         if (commentType.lastLine)
-            comment += `${commentType.lastLine.trim()}\n`;
+            comment += `${commentType.lastLine}\n`;
         const firstCommentsLine = comment.split("\n")[0];
         for await (const extension of commentType.extensions) {
             const files = allFiles.filter((file) => file.endsWith(`.${extension}`));
