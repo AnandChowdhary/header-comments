@@ -2,7 +2,7 @@
  * This is an example file header
  * @author Anand Chowdhary <mail@anandchowdhary.com>
  * @link https://github.com/koj-co/header-comments
-*/
+ */
 
 import { getInput, setFailed } from "@actions/core";
 import recursiveReaddir from "recursive-readdir";
@@ -19,7 +19,8 @@ export const run = async () => {
     commentText.split("\n").forEach((line) => {
       comment += `${commentType.middleLinePrefix}${line}\n`;
     });
-    if (commentType.lastLine) comment += `${commentType.lastLine.trim()}\n`;
+    comment = comment.trim();
+    if (commentType.lastLine) comment += `${commentType.lastLine}\n`;
     const firstCommentsLine = comment.split("\n")[0];
     for await (const extension of commentType.extensions) {
       const files = allFiles.filter((file) => file.endsWith(`.${extension}`));
