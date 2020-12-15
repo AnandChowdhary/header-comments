@@ -1,11 +1,10 @@
-name: "Action.ts"
+name: "Header Comments"
 description: "GitHub Actions starter for TypeScript with automated releases"
 author: "Koj <https://github.com/koj.co>"
 inputs:
-  milliseconds:
-    required: true
-    description: "Number of milliseconds to wait"
-    default: "1000"
+  directory:
+    required: false
+    description: "Directory to search for files in"
 runs:
   using: "node12"
   main: "dist/index.js"
