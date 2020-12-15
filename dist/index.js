@@ -1429,7 +1429,7 @@ const run = async () => {
             comment += `${commentType.middleLinePrefix}${line}\n`;
         });
         if (commentType.lastLine)
-            comment += `${commentType.lastLine}\n`;
+            comment += `${commentType.lastLine.trim()}\n`;
         for await (const extension of commentType.extensions) {
             const files = allFiles.filter((file) => file.endsWith(`.${extension}`));
             for await (const file of files) {
