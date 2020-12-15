@@ -1,25 +1,30 @@
-import { getInput, debug, setFailed, setOutput } from "@actions/core";
-import { getOctokit } from "@actions/github";
-
-const token =
-  getInput("token") || process.env.GH_PAT || process.env.GITHUB_TOKEN;
+import { getInput, setFailed } from "@actions/core";
+import recursiveReaddir from "recursive-readdir";
+import { join } from "path";
+import { commentTypes } from "./comments";
+import { readFile, writeFile } from "fs/promises";
 
 export const run = async () => {
-  if (!token) throw new Error("GitHub token not found");
-  const octokit = getOctokit(token);
-
-  const ms: string = getInput("milliseconds");
-  debug(`Waiting ${ms} milliseconds ...`);
-
-  debug(new Date().toTimeString());
-  await wait(parseInt(ms, 10));
-  debug(new Date().toTimeString());
-
-  setOutput("time", new Date().toTimeString());
-};
-
-export const wait = (milliseconds: number) => {
-  return new Promise<void>((resolve) => setTimeout(() => resolve(), milliseconds));
+  const commentText = await readFile(join(".", ".github", "FILE_HEADER"), "utf8");
+  const allFiles = await recursiveReaddir(join(".", ...(getInput("directory") || "").split("/")));
+  for await (const commentType of commentTypes) {
+    let comment = ``;
+    if (commentType.firstLine) comment += `${commentType.firstLine}\n`;
+    commentText.split("\n").forEach((line) => {
+      comment += `${commentType.middleLinePrefix}${line}\n`;
+    });
+    if (commentType.lastLine) comment += `${commentType.lastLine}\n`;
+    for await (const extension of commentType.extensions) {
+      const files = allFiles.filter((file) => file.endsWith(`.${extension}`));
+      for await (const file of files) {
+        const contents = await readFile(file, "utf8");
+        if (contents.split("\n").pop() !== comment.split("\n").pop()) {
+          await writeFile(file, `${comment}\n${contents}`);
+          console.log("Added comment", file);
+        }
+      }
+    }
+  }
 };
 
 run()
