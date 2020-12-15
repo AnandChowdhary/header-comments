@@ -1,3 +1,11 @@
+## v1.0.5 (2020-12-15)
+
+[📝 Release notes](https://github.com/koj-co/header-comments/releases/tag/v1.0.5) · [💻 Compare](https://github.com/koj-co/header-comments/compare/v1.0.4...v1.0.5) · [🔖 Tag](https://github.com/koj-co/header-comments/tree/v1.0.5) · 🗄️ Archive ([zip](https://github.com/koj-co/header-comments/archive/v1.0.5.zip) · [tar.gz](https://github.com/koj-co/header-comments/archive/v1.0.5.tar.gz))
+
+### 🐛 Bug fixes
+
+- [`6d67473`](https://github.com/koj-co/header-comments/commit/6d67473)  Trim comment before publishing
+
 ## v1.0.4 (2020-12-15)
 
 [📝 Release notes](https://github.com/koj-co/header-comments/releases/tag/v1.0.4) · [💻 Compare](https://github.com/koj-co/header-comments/compare/v1.0.3...v1.0.4) · [🔖 Tag](https://github.com/koj-co/header-comments/tree/v1.0.4) · 🗄️ Archive ([zip](https://github.com/koj-co/header-comments/archive/v1.0.4.zip) · [tar.gz](https://github.com/koj-co/header-comments/archive/v1.0.4.tar.gz))
