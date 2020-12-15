@@ -14,12 +14,12 @@ export const run = async () => {
       comment += `${commentType.middleLinePrefix}${line}\n`;
     });
     if (commentType.lastLine) comment += `${commentType.lastLine.trim()}\n`;
-    const firstCommentsLine = comment.split("\n")[comment.split("\n").length - 1];
+    const firstCommentsLine = comment.split("\n")[0];
     for await (const extension of commentType.extensions) {
       const files = allFiles.filter((file) => file.endsWith(`.${extension}`));
       for await (const file of files) {
         const contents = readFileSync(file, "utf8");
-        if (contents.split("\n")[contents.split("\n").length - 1] !== firstCommentsLine) {
+        if (contents.split("\n")[0] !== firstCommentsLine) {
           writeFileSync(file, `${comment}\n${contents}`);
           console.log("Added comment", file);
         }
