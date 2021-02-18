@@ -16,7 +16,7 @@ export const run = async () => {
   for await (const commentType of commentTypes) {
     let comment = ``;
     if (commentType.firstLine) comment += `${commentType.firstLine}\n`;
-    commentText.split("\n").forEach((line) => {
+    commentText.trim().split("\n").forEach((line) => {
       comment += `${commentType.middleLinePrefix}${line}\n`;
     });
     comment = comment.trim();
